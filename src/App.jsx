@@ -1,37 +1,6 @@
-import reactImg from "./assets/react-core-concepts.png";
-import componentImg from "./assets/components.png";
 import { CORE_CONCEPTS } from "./data";
-
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
-
-  return (<>
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  </>);
-}
-
-function CoreConcept({image, title, description}) { //desestructuracion de objeto que recibe el componente
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-}
+import CoreConcept from "./components/CoreConcept";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -43,11 +12,11 @@ function App() {
           <ul>
             <CoreConcept
               title={CORE_CONCEPTS[0].title}
-              description={CORE_CONCEPTS[0].description}  // una forma de enviarle las propiedades al componente
+              description={CORE_CONCEPTS[0].description}  // sending props to the component
               image={CORE_CONCEPTS[0].image}
             />
             <CoreConcept {...CORE_CONCEPTS[1]} />
-            <CoreConcept {...CORE_CONCEPTS[2]}            /*otra forma de enviarle las propiedades al componente*//>
+            <CoreConcept {...CORE_CONCEPTS[2]}            /*other way to send props*//>
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
