@@ -1,8 +1,17 @@
 import { CORE_CONCEPTS } from "./data";
 import CoreConcept from "./components/CoreConcept/CoreConcept";
 import Header from "./components/Header/Header";
+import TabButton from "./components/TabButton/TabButton";
+import { EXAMPLES } from "./data";
+import { useState } from "react";
 
 function App() {
+  const [identifier, setIdentifier] = useState("components");
+
+  function onClickHandler(identifier){
+    setIdentifier(identifier)
+  }
+
   return (
     <div>
       <Header />
@@ -20,6 +29,24 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
+
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onClick={()=>onClickHandler("components")}>Components</TabButton>
+            <TabButton onClick={()=>onClickHandler("jsx")}>JSX</TabButton>
+            <TabButton onClick={()=>onClickHandler("props")}>Props</TabButton>
+            <TabButton onClick={()=>onClickHandler("state")}>State</TabButton>
+          </menu>
+        </section>
+
+        <div id="tab-content">
+          <h3>{EXAMPLES[identifier].title}</h3>
+          <p>{EXAMPLES[identifier].description}</p>
+          <pre>
+            <code>{EXAMPLES[identifier].code}</code>
+          </pre>
+        </div>
 
       </main>
     </div>
