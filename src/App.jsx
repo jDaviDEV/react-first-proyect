@@ -6,10 +6,24 @@ import { EXAMPLES } from "./data";
 import { useState } from "react";
 
 function App() {
-  const [identifier, setIdentifier] = useState("components");
+  const [identifier, setIdentifier] = useState();
 
-  function onClickHandler(identifier){
+  function onClickHandler(identifier) {
     setIdentifier(identifier)
+  }
+
+  let tabContent = <p>Please select a concept.</p>
+
+  if (identifier) {
+    tabContent = (
+    <div id="tab-content">
+      <h3>{EXAMPLES[identifier].title}</h3>
+      <p>{EXAMPLES[identifier].description}</p>
+      <pre>
+        <code>{EXAMPLES[identifier].code}</code>
+      </pre>
+    </div>
+    );
   }
 
   return (
@@ -25,7 +39,7 @@ function App() {
               image={CORE_CONCEPTS[0].image}
             />
             <CoreConcept {...CORE_CONCEPTS[1]} />
-            <CoreConcept {...CORE_CONCEPTS[2]}            /*other way to send props*//>
+            <CoreConcept {...CORE_CONCEPTS[2]}            /*other way to send props*/ />
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
@@ -33,20 +47,14 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onClick={()=>onClickHandler("components")}>Components</TabButton>
-            <TabButton onClick={()=>onClickHandler("jsx")}>JSX</TabButton>
-            <TabButton onClick={()=>onClickHandler("props")}>Props</TabButton>
-            <TabButton onClick={()=>onClickHandler("state")}>State</TabButton>
+            <TabButton onClick={() => onClickHandler("components")}>Components</TabButton>
+            <TabButton onClick={() => onClickHandler("jsx")}>JSX</TabButton>
+            <TabButton onClick={() => onClickHandler("props")}>Props</TabButton>
+            <TabButton onClick={() => onClickHandler("state")}>State</TabButton>
           </menu>
         </section>
 
-        <div id="tab-content">
-          <h3>{EXAMPLES[identifier].title}</h3>
-          <p>{EXAMPLES[identifier].description}</p>
-          <pre>
-            <code>{EXAMPLES[identifier].code}</code>
-          </pre>
-        </div>
+      {tabContent}
 
       </main>
     </div>
