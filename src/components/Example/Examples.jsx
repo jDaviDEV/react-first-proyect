@@ -1,6 +1,7 @@
 import React from 'react';
 import TabButton from './TabButton';
 import Section from '../Section/Section';
+import Tabs from '../Tabs/Tabs';
 import { EXAMPLES } from '../../data';
 import { useState } from 'react';
 
@@ -28,15 +29,15 @@ const Examples = () => {
     return (
         <>
             <Section title="Examples" id="examples">
-                <menu>
+                <Tabs buttons={<>
                     <TabButton isSelected={identifier === "components"} onClick={() => onClickHandler("components")}>Components</TabButton>
                     <TabButton isSelected={identifier === "jsx"} onClick={() => onClickHandler("jsx")}>JSX</TabButton>
                     <TabButton isSelected={identifier === "props"} onClick={() => onClickHandler("props")}>Props</TabButton>
                     <TabButton isSelected={identifier === "state"} onClick={() => onClickHandler("state")}>State</TabButton>
-                </menu>
+                </>}>
+                    {tabContent}
+                </Tabs>
             </Section>
-
-            {tabContent}
         </>
     )
 }
