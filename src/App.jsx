@@ -47,10 +47,10 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onClick={() => onClickHandler("components")}>Components</TabButton>
-            <TabButton onClick={() => onClickHandler("jsx")}>JSX</TabButton>
-            <TabButton onClick={() => onClickHandler("props")}>Props</TabButton>
-            <TabButton onClick={() => onClickHandler("state")}>State</TabButton>
+            <TabButton isSelected={identifier === "components"} onClick={() => onClickHandler("components")}>Components</TabButton>
+            <TabButton isSelected={identifier === "jsx"} onClick={() => onClickHandler("jsx")}>JSX</TabButton>
+            <TabButton isSelected={identifier === "props"} onClick={() => onClickHandler("props")}>Props</TabButton>
+            <TabButton isSelected={identifier === "state"} onClick={() => onClickHandler("state")}>State</TabButton>
           </menu>
         </section>
 
