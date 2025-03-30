@@ -1,6 +1,6 @@
-function TabButton ({children, onClick, isSelected}) {
+function TabButton ({children, isSelected, ...props}) {
     return (
-        <li><button className={isSelected ? "active": undefined} onClick={onClick}>{children}</button></li>
+        <li><button className={isSelected ? "active": undefined} {...props}>{children}</button></li>
         //children is a special prop atribute for the component
         // allows to send a value between Component's
         // opening and closing tag <>--here--</>
