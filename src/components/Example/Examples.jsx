@@ -29,7 +29,7 @@ const Examples = () => {
     return (
         <>
             <Section title="Examples" id="examples">
-                <Tabs buttons={<>
+                <Tabs ButtonsContainer="menu" buttons={<>
                     <TabButton isSelected={identifier === "components"} onClick={() => onClickHandler("components")}>Components</TabButton>
                     <TabButton isSelected={identifier === "jsx"} onClick={() => onClickHandler("jsx")}>JSX</TabButton>
                     <TabButton isSelected={identifier === "props"} onClick={() => onClickHandler("props")}>Props</TabButton>
